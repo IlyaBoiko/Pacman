@@ -1,0 +1,228 @@
+.container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #333;
+    box-sizing: border-box;
+}
+
+.pacman {
+    position: relative;
+    height: 160px;
+    width: 160px;
+}
+
+.pacman:after,
+.pacman:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 80px solid orange;
+    border-radius: 50%;
+    border-right: 80px solid transparent;
+    animation: open linear 0.5s infinite;
+}
+
+.pacman:after {
+    animation: close linear 0.5s infinite;
+}
+
+.eye-white {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 90px;
+    top: 20px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.eye-black {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 102px;
+    top: 27px;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 3;
+    animation: pacman-eye 2s linear alternate infinite;
+}
+
+@keyframes pacman-eye {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(-12px) scale(0.7);
+    }
+}
+
+.circle {
+    background-color: orange;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -100px;
+    opacity: 0;
+}
+
+.circle:nth-child(1) {
+    animation: ball 1s 1s infinite linear;
+
+}
+
+.circle:nth-child(2) {
+    animation: ball 1s 0.5s infinite linear;
+}
+
+.circle:nth-child(3) {
+    animation: ball 1s 0s infinite linear;
+}
+
+
+@keyframes open {
+    0% {
+        transform: rotate(270deg);
+    }
+
+    50% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes close {
+    0% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
+@keyframes ball {
+    20%, 80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-120px, -50%);
+    }
+}
+
+.ghosts {
+    display: flex;
+}
+
+.ghost {
+    width: 160px;
+    height: 160px;
+    background-color: orangered;
+    margin: 40px 20px;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    position: relative;
+    animation: ghostRun 2s linear infinite alternate;
+}
+
+@keyframes ghostRun {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(100px) rotate(360deg) scale(0.5);
+    }
+}
+
+.eye,
+.eye2 {
+    width: 18px;
+    height: 18px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    animation: run 2s linear infinite alternate;
+}
+
+.eye {
+    top: 45%;
+    left: 50px;
+}
+
+@keyframes run {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(-23px);
+    }
+}
+
+.eye2 {
+    top: 45%;
+    left: 114px;
+    z-index: 2;
+}
+
+.ghost:before,
+.ghost:after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: white; 
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.ghost:before {
+    top: 50%;
+    left: 30%;
+}
+
+.ghost:after {
+    top: 50%;
+    left: 70%;
+}
+
+.legs {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 130px;
+    left: 0;
+    background-color: orangered;
+}
+
+.legs:nth-child(4) {
+    left: 50px;
+}
+
+.legs:nth-child(5) {
+    left: 100px;
+}
